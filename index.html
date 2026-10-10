@@ -21,13 +21,22 @@
      screen playing over a page already scrolled half way down. Set from app.js at the
      end of <body> this is too late: the restore is already queued. */
   if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-  // Fail open: a decorative boot screen must never be able to hide the portfolio forever.
-  // If startup code is interrupted, remove the overlay after a safe timeout.
-  window.__portfolioBootWatchdog = setTimeout(() => {
-    const boot = document.getElementById('boot');
-    if (boot) boot.remove();
-    if (document.body) document.body.style.overflow = '';
-  }, 9000);
+  // Fail open: decorative startup effects must never be able to hide the portfolio.
+  window.__portfolioFailOpen = () => {
+    const release = () => {
+      const boot = document.getElementById('boot');
+      if (boot) boot.remove();
+      if (document.body) document.body.style.overflow = '';
+    };
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', release, { once: true });
+    } else {
+      release();
+    }
+  };
+  window.addEventListener('error', () => setTimeout(window.__portfolioFailOpen, 0));
+  window.addEventListener('unhandledrejection', () => setTimeout(window.__portfolioFailOpen, 0));
+  window.__portfolioBootWatchdog = setTimeout(window.__portfolioFailOpen, 9000);
 </script>
 <link rel="stylesheet" href="css/app.css?v=81">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230B0B0C'/><text y='72' x='50' text-anchor='middle' font-family='Inter,sans-serif' font-weight='900' font-size='58' fill='%23C6F24E'>RM</text></svg>">
