@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#070708" />
+  <meta name="description" content="Rishikesh Munnaluri — AI/ML engineer building useful systems, realtime products and polished experiments." />
+  <title>Rishi — Portfolio</title>
+  <script>if ('scrollRestoration' in history) history.scrollRestoration = 'manual';</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,600;9..40,800;9..40,900&family=Instrument+Serif:ital@0;1&family=Yellowtail&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <svg class="cursor" id="cursor" viewBox="0 0 100 100" aria-hidden="true"><path id="cursorPath"></path></svg>
+  <div class="cursor-label" id="cursorLabel" aria-hidden="true"><span></span></div>
+
+  <div class="boot" id="boot" aria-hidden="true">
+    <p class="boot__hello">Hello</p>
+    <div class="boot__core">
+      <svg class="boot__mark" viewBox="0 0 340 150" role="img" aria-label="RM">
+        <path d="M45 126V27h48c31 0 51 16 51 42 0 21-13 35-34 40l39 17" />
+        <path d="M45 78h50" />
+        <path d="M183 126V27l48 66 48-66v99" />
+      </svg>
+      <div class="boot__meter"><i id="bootFill"></i></div>
+      <div class="boot__read"><span id="bootTask">INIT</span><span><b id="bootPct">000</b>%</span></div>
+    </div>
+  </div>
+
+  <header class="nav" id="nav">
+    <a class="nav__brand" href="#top" data-cursor="TOP">RM.PORTFOLIO</a>
+    <nav>
+      <a href="#work" data-sec="work"><i></i>WORK</a>
+      <a href="#about" data-sec="about"><i></i>ABOUT</a>
+      <a href="#proof" data-sec="proof"><i></i>PROOF</a>
+      <a href="#contact" data-sec="contact"><i></i>CONTACT</a>
+    </nav>
+  </header>
+
+  <a class="quick-cv" href="https://github.com/Rishikeshsanin" target="_blank" rel="noopener" data-cursor="GITHUB">
+    <b>View GitHub</b><span>See the work behind the page</span>
+  </a>
+
+  <main id="top">
+    <section class="hero" id="hero" data-theme="light">
+      <div class="eyebrow">AI / ML · FULL-STACK · PRODUCT ENGINEERING</div>
+      <h1 class="hero__title">
+        <span class="line"><span class="warp">BUILDING</span></span>
+        <span class="line"><span class="warp">SYSTEMS THAT</span></span>
+        <span class="line"><span class="warp">FEEL ALIVE.</span></span>
+      </h1>
+      <p class="hero__lede">Final-year CSE (AI &amp; ML) engineer turning ambitious ideas into real products — AI systems, realtime multiplayer experiences, developer tools and experiments that ship.</p>
+
+      <div class="rig" aria-hidden="true">
+        <div class="rig__lid"><canvas id="heroCanvas"></canvas></div>
+        <div class="rig__hinge"></div><div class="rig__deck"><span></span></div>
+      </div>
+
+      <div class="hero__meta"><span>BENGALURU, IN</span><span>RV UNIVERSITY</span><span>OPEN TO OPPORTUNITIES</span></div>
+      <div class="scroll-cue"><i></i><span>SCROLL</span></div>
+    </section>
+
+    <section class="statement dark" id="statement" data-theme="dark">
+      <div class="statement__inner">
+        <p class="statement__copy" data-reveal>I like projects where <em>AI, product thinking and engineering</em> have to survive contact with real users.</p>
+        <div class="orb" aria-hidden="true"><canvas id="orbCanvas"></canvas></div>
+      </div>
+    </section>
+
+    <section class="toolbox dark" data-theme="dark">
+      <div class="section-head">
+        <h2>THE TOOLBOX</h2>
+        <p>The stack changes. The bias stays the same: understand it, build it, test it, ship it.</p>
+      </div>
+      <div class="rail"><div class="rail__track" id="railA"></div></div>
+      <div class="rail rail--reverse"><div class="rail__track" id="railB"></div></div>
+    </section>
+
+    <section class="work" id="work" data-theme="light">
+      <div class="work__heading">
+        <p class="kicker">SELECTED WORK · 2025—2026</p>
+        <h2>WORKS</h2>
+        <p>Eight projects across AI, computer vision, realtime systems, healthcare tooling and social products.</p>
+      </div>
+
+      <div class="project-stage" id="projectStage">
+        <div class="project-orbit" id="projectOrbit"></div>
+        <div class="project-core" aria-hidden="true"><span>RM</span><small>BUILD / TEST / SHIP</small></div>
+        <div class="project-readout">
+          <div class="project-count"><span id="projectIndex">01</span> / <span id="projectTotal">08</span><b id="projectKind"></b></div>
+          <h3 id="projectName">ReturnReview</h3>
+          <p id="projectTag"></p>
+          <button id="projectMore" data-cursor="OPEN">Read the detail <i>↗</i></button>
+        </div>
+        <div class="project-nav"><button id="prevProject" aria-label="Previous project">←</button><button id="nextProject" aria-label="Next project">→</button></div>
+      </div>
+
+      <div class="drawer" id="drawer" hidden>
+        <button class="drawer__close" id="drawerClose">CLOSE ✕</button>
+        <div class="drawer__grid">
+          <div><p class="kicker" id="drawerKind"></p><h3 id="drawerName"></h3><p id="drawerDesc"></p><div class="drawer__links" id="drawerLinks"></div></div>
+          <div><p class="kicker">STACK</p><div class="stack-list" id="drawerStack"></div><p class="kicker drawer__metric-label">WHY IT MATTERS</p><p class="drawer__metric" id="drawerMetric"></p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="manifesto dark" data-theme="dark">
+      <h2><span>(HUMAN) CURIOSITY</span><span>MACHINE SPEED</span></h2>
+    </section>
+
+    <section class="about" id="about" data-theme="light">
+      <div class="section-head section-head--dark"><h2>ABOUT ME</h2><p>Not just “AI”. I care about the full path from idea to interface to deployment.</p></div>
+      <div class="laptop" id="laptop">
+        <div class="laptop__screen">
+          <div class="desktop-bar"><span><i></i><i></i><i></i></span><b>rishi — desktop</b><time id="clock">--:--</time></div>
+          <div class="desktop">
+            <div class="desktop__apps">
+              <button class="desktop-app active" data-window="about"><b>◉</b><span>About me</span></button>
+              <button class="desktop-app" data-window="now"><b>⌁</b><span>Currently</span></button>
+              <button class="desktop-app" data-window="location"><b>⌖</b><span>Location</span></button>
+            </div>
+
+            <article class="window active" data-window-panel="about">
+              <div class="window__bar"><i></i>About me</div>
+              <div class="window__body about-grid">
+                <div>
+                  <p class="window__lead">I’m Rishikesh Munnaluri — Rishi — a final-year CSE (AI &amp; ML) student who likes building things that are a little too ambitious for a “student project”.</p>
+                  <p>I work across LLM applications, computer vision, realtime systems and full-stack product engineering. I enjoy the ugly middle too: edge cases, sync bugs, evaluations, deployment problems, and making the thing feel polished on somebody else’s device.</p>
+                  <p>My portfolio is less about one stack and more about range: useful AI, multiplayer experiences, creative web experiments, developer tooling and systems work.</p>
+                </div>
+                <div class="capability-map" id="capabilityMap"></div>
+              </div>
+            </article>
+
+            <article class="window" data-window-panel="now">
+              <div class="window__bar"><i></i>Currently</div>
+              <div class="window__body now-panel"><p class="now-time" id="nowTime">--:--</p><p>IST · Bengaluru</p><dl><div><dt>Focus</dt><dd>AI/ML + software engineering roles</dd></div><div><dt>Mode</dt><dd>Building, applying, learning, shipping</dd></div><div><dt>GitHub</dt><dd><a href="https://github.com/Rishikeshsanin" target="_blank" rel="noopener">@Rishikeshsanin ↗</a></dd></div></dl></div>
+            </article>
+
+            <article class="window" data-window-panel="location">
+              <div class="window__bar"><i></i>Location</div>
+              <div class="window__body location-panel"><div class="mini-globe" aria-hidden="true"><span></span></div><div><p class="kicker">WHERE</p><h3>Bengaluru, India</h3><p>Studying at RV University. Open to internships, graduate roles and relocation for the right opportunity.</p><p class="coords">12.97° N · 77.59° E</p></div></div>
+            </article>
+          </div>
+        </div>
+        <div class="laptop__base"><span></span></div>
+      </div>
+    </section>
+
+    <section class="proof" id="proof" data-theme="light">
+      <div class="proof__head"><span class="pill">BUILD SIGNALS</span><h2>PROOF THE WORK<br>LEFT THE LAPTOP.</h2></div>
+      <div class="proof-grid" id="proofGrid"></div>
+      <div class="skills-panel">
+        <div><span class="pill">CAPABILITIES</span><h3>Things I can actually build with.</h3></div>
+        <div class="skills-bars" id="skillsBars"></div>
+      </div>
+    </section>
+
+    <section class="cta dark" data-theme="dark"><div class="cta__track"><span>LET'S BUILD SOMETHING</span><span>LET'S BUILD SOMETHING</span><span>LET'S BUILD SOMETHING</span></div></section>
+
+    <section class="contact dark" id="contact" data-theme="dark">
+      <div class="game-shell">
+        <div class="game-bar"><span>SNAKE.EXE</span><span>SCORE <b id="score">00</b> · BEST <b id="best">00</b></span></div>
+        <canvas id="snakeCanvas" aria-label="Playable Snake game. Use arrow keys or WASD."></canvas>
+        <p id="gameHint">press enter or tap to start · arrows / WASD</p>
+      </div>
+      <aside class="note">
+        <i></i><p>notes to self</p><ul><li>build the weird version</li><li>make it work on real devices</li><li>measure before claiming</li><li>good UX is engineering too</li><li>ship, learn, iterate</li></ul><small>the operating system</small>
+      </aside>
+    </section>
+
+    <footer class="footer dark" data-theme="dark">
+      <h2><span>BUILDING &amp;</span><span>LEARNING IN</span><span>PUBLIC.</span></h2>
+      <div class="phone">
+        <div class="phone__screen"><div class="phone__top"><i></i><b>RM</b></div><p>Reach me</p><div class="phone__apps"><a href="https://github.com/Rishikeshsanin" target="_blank" rel="noopener">GH<span>GitHub</span></a><a href="mailto:rishikeshsanin@gmail.com">@<span>Email</span></a><a href="https://portfolio-main-sepia-xi.vercel.app/" target="_blank" rel="noopener">↗<span>Portfolio</span></a></div></div>
+      </div>
+      <div class="footer__bar"><span>©2026 RISHIKESH MUNNALURI</span><span>BENGALURU, IN</span><a href="mailto:rishikeshsanin@gmail.com">RISHIKESHSANIN@GMAIL.COM</a></div>
+    </footer>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
