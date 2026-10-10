@@ -21,8 +21,15 @@
      screen playing over a page already scrolled half way down. Set from app.js at the
      end of <body> this is too late: the restore is already queued. */
   if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  // Fail open: a decorative boot screen must never be able to hide the portfolio forever.
+  // If startup code is interrupted, remove the overlay after a safe timeout.
+  window.__portfolioBootWatchdog = setTimeout(() => {
+    const boot = document.getElementById('boot');
+    if (boot) boot.remove();
+    if (document.body) document.body.style.overflow = '';
+  }, 9000);
 </script>
-<link rel="stylesheet" href="css/app.css?v=80">
+<link rel="stylesheet" href="css/app.css?v=81">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230B0B0C'/><text y='72' x='50' text-anchor='middle' font-family='Inter,sans-serif' font-weight='900' font-size='58' fill='%23C6F24E'>RM</text></svg>">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Person","name":"Rishikesh Munnaluri","url":"https://portfolio2-phi-lac.vercel.app/","sameAs":["https://github.com/Rishikeshsanin","https://www.linkedin.com/in/rishikesh-munnaluri-143b34293/"],"alumniOf":{"@type":"CollegeOrUniversity","name":"RV University"},"knowsAbout":["Artificial Intelligence","Machine Learning","Computer Vision","Realtime Systems","Software Engineering"]}
@@ -570,13 +577,13 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
-<script src="js/data.js?v=80"></script>
-<script src="js/coil.js?v=80"></script>
-<script src="js/screen.js?v=80"></script>
-<script src="js/world.js?v=80"></script>
-<script src="js/globe.js?v=80"></script>
-<script src="js/cursor.js?v=80"></script>
-<script src="js/game.js?v=80"></script>
-<script src="js/app.js?v=80"></script>
+<script src="js/data.js?v=81"></script>
+<script src="js/coil.js?v=81"></script>
+<script src="js/screen.js?v=81"></script>
+<script src="js/world.js?v=81"></script>
+<script src="js/globe.js?v=81"></script>
+<script src="js/cursor.js?v=81"></script>
+<script src="js/game.js?v=81"></script>
+<script src="js/app.js?v=81"></script>
 </body>
 </html>
