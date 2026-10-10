@@ -1,188 +1,434 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#070708" />
-  <meta name="description" content="Rishikesh Munnaluri — AI/ML engineer building useful systems, realtime products and polished experiments." />
-  <title>Rishi — Portfolio</title>
-  <script>if ('scrollRestoration' in history) history.scrollRestoration = 'manual';</script>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,600;9..40,800;9..40,900&family=Instrument+Serif:ital@0;1&family=Yellowtail&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rishikesh Munnaluri — Software Engineer · Applied AI</title>
+<meta name="description" content="Rishikesh Munnaluri — final-year CSE (AI &amp; ML) engineer building applied AI systems, realtime products and production software in Bengaluru.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;700&family=Yellowtail&display=swap" rel="stylesheet">
+<script>
+  /* Before anything else parses. A page with a preloader has to start at the top, and
+     the browser restores the previous scroll position on reload — which left the boot
+     screen playing over a page already scrolled half way down. Set from app.js at the
+     end of <body> this is too late: the restore is already queued. */
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+</script>
+<link rel="stylesheet" href="css/app.css?v=80">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230B0B0C'/><text y='72' x='50' text-anchor='middle' font-family='Inter,sans-serif' font-weight='900' font-size='58' fill='%23C6F24E'>RM</text></svg>">
 </head>
 <body>
-  <svg class="cursor" id="cursor" viewBox="0 0 100 100" aria-hidden="true"><path id="cursorPath"></path></svg>
-  <div class="cursor-label" id="cursorLabel" aria-hidden="true"><span></span></div>
 
-  <div class="boot" id="boot" aria-hidden="true">
-    <p class="boot__hello">Hello</p>
-    <div class="boot__core">
-      <svg class="boot__mark" viewBox="0 0 340 150" role="img" aria-label="RM">
-        <path d="M45 126V27h48c31 0 51 16 51 42 0 21-13 35-34 40l39 17" />
-        <path d="M45 78h50" />
-        <path d="M183 126V27l48 66 48-66v99" />
-      </svg>
-      <div class="boot__meter"><i id="bootFill"></i></div>
-      <div class="boot__read"><span id="bootTask">INIT</span><span><b id="bootPct">000</b>%</span></div>
+<!-- ══ the water cursor ═════════════════════════════════════════════════════ -->
+<svg class="cursor" aria-hidden="true"><path class="cursor__path"/></svg>
+<div class="cursor-label" aria-hidden="true"><span></span></div>
+
+<!-- ══ boot — the mark draws itself in over a technical readout ═══════════ -->
+<div class="boot" id="boot">
+  <p class="boot__hello" id="bootHello">Hello</p>
+  <div class="boot__inner">
+    <!-- the S is a signature in one continuous stroke; the K is the straight
+         monoline form. Drawn in that order — S first, then the K in three strokes. -->
+    <svg class="boot__mark" id="bootMark" viewBox="0 0 280 160" aria-label="RM">
+      <path d="M38 142L38 24"/>
+      <path d="M38 25H82C111 25 126 39 126 61C126 84 109 97 82 97H38"/>
+      <path d="M81 97L130 142"/>
+      <path d="M158 142L158 24L204 92L250 24L250 142"/>
+    </svg>
+    <div class="boot__meter">
+      <div class="boot__ticks"></div>
+      <div class="boot__track"><i id="bootFill"></i></div>
     </div>
+    <p class="boot__read">
+      <span id="bootTask">INIT</span>
+      <span class="boot__pct"><b id="bootPct">000</b>%</span>
+    </p>
+  </div>
+</div>
+
+<!-- ══ nav — tracks the section you're in ═══════════════════════════════════ -->
+<header class="nav" id="nav">
+  <a class="nav__mark" href="#top" data-cursor="top">RM.PORTFOLIO</a>
+  <nav class="nav__set" id="navSet">
+    <a class="nav__i" href="#work"    data-sec="work"><i></i><span>WORK</span></a>
+    <a class="nav__i" href="#about"   data-sec="about"><i></i><span>ABOUT</span></a>
+    <a class="nav__i" href="#proof"   data-sec="proof"><i></i><span>PROOF</span></a>
+    <a class="nav__i" href="#contact" data-sec="contact"><i></i><span>GET IN TOUCH</span></a>
+  </nav>
+  <span class="nav__rail" id="navRail"></span>
+</header>
+
+<!-- pops three times on load so it is the first thing you notice -->
+<a class="cv" id="cvBtn" href="resume.html" target="_blank" rel="noopener" data-cursor="open">
+  <span class="cv__b">View résumé</span>
+  <span class="cv__note" id="cvNote">Open my résumé</span>
+</a>
+
+<main id="top">
+
+<!-- ══ 01 · hero ════════════════════════════════════════════════════════════ -->
+<section class="hero" id="hero" data-sec="hero">
+  <h1 class="hero__h">
+    <span class="ln"><span class="warp" data-warp>BUILDING</span></span>
+    <span class="ln"><span class="warp" data-warp>INTELLIGENCE</span></span>
+    <span class="ln"><span class="warp" data-warp>THAT SHIPS</span></span>
+  </h1>
+  <p class="hero__lede">
+    A final-year CSE (AI &amp; ML) engineer building applied AI systems, realtime products
+    and production software out of Bengaluru since 2023.
+  </p>
+
+  <!-- the machine the rest of the page was built on, running the work itself -->
+  <div class="rig" aria-hidden="true">
+    <div class="rig__lid">
+      <div class="rig__screen"><canvas id="heroScreen"></canvas></div>
+    </div>
+    <div class="rig__hinge"></div>
+    <div class="rig__deck"><span></span></div>
   </div>
 
-  <header class="nav" id="nav">
-    <a class="nav__brand" href="#top" data-cursor="TOP">RM.PORTFOLIO</a>
-    <nav>
-      <a href="#work" data-sec="work"><i></i>WORK</a>
-      <a href="#about" data-sec="about"><i></i>ABOUT</a>
-      <a href="#proof" data-sec="proof"><i></i>PROOF</a>
-      <a href="#contact" data-sec="contact"><i></i>CONTACT</a>
-    </nav>
-  </header>
+  <div class="hero__meta">
+    <span>BENGALURU, IN</span><span>B.TECH CSE (AI &amp; ML) · CGPA 7.9/10</span><span>GRADUATING 2027</span>
+  </div>
+  <div class="hero__cue"><i></i><span>SCROLL</span></div>
+</section>
 
-  <a class="quick-cv" href="https://github.com/Rishikeshsanin" target="_blank" rel="noopener" data-cursor="GITHUB">
-    <b>View GitHub</b><span>See the work behind the page</span>
-  </a>
+<!-- ══ 02 · statement ═══════════════════════════════════════════════════════ -->
+<section class="stmt" id="stmt" data-sec="stmt">
+  <div class="stmt__hold">
+    <p class="stmt__h" data-reveal-words>
+      I build <em>applied AI, realtime systems, and interfaces</em>
+      that actually leave the laptop.
+    </p>
+    <div class="stmt__obj"><canvas data-coil="stmt"></canvas></div>
+  </div>
+</section>
 
-  <main id="top">
-    <section class="hero" id="hero" data-theme="light">
-      <div class="eyebrow">AI / ML · FULL-STACK · PRODUCT ENGINEERING</div>
-      <h1 class="hero__title">
-        <span class="line"><span class="warp">BUILDING</span></span>
-        <span class="line"><span class="warp">SYSTEMS THAT</span></span>
-        <span class="line"><span class="warp">FEEL ALIVE.</span></span>
-      </h1>
-      <p class="hero__lede">Final-year CSE (AI &amp; ML) engineer turning ambitious ideas into real products — AI systems, realtime multiplayer experiences, developer tools and experiments that ship.</p>
+<!-- ══ 02b · the toolbox ════════════════════════════════════════════════════ -->
+<section class="tools" id="tools">
+  <div class="tools__head">
+    <h2 class="tools__t">THE TOOLBOX</h2>
+    <p class="tools__p">Everything I reach for,<br>and actually know.</p>
+  </div>
+  <div class="rail"><div class="rail__track" id="railA"></div></div>
+  <div class="rail"><div class="rail__track" id="railB"></div></div>
+</section>
 
-      <div class="rig" aria-hidden="true">
-        <div class="rig__lid"><canvas id="heroCanvas"></canvas></div>
-        <div class="rig__hinge"></div><div class="rig__deck"><span></span></div>
-      </div>
+<!-- ══ 03 · work — the ring ═════════════════════════════════════════════════ -->
+<section class="work" id="work" data-sec="work">
+  <div class="work__head">
+    <div class="worksmq"><div class="worksmq__t" id="worksTrack"></div></div>
+    <p class="work__lead">Eight systems built for real users,<br>real constraints, real deadlines.</p>
+  </div>
 
-      <div class="hero__meta"><span>BENGALURU, IN</span><span>RV UNIVERSITY</span><span>OPEN TO OPPORTUNITIES</span></div>
-      <div class="scroll-cue"><i></i><span>SCROLL</span></div>
-    </section>
+  <div class="ring" id="ring">
+    <div class="ring__stage" id="ringStage">
+      <!-- the coil sits at the centre of the stage and the panels orbit in front of it,
+           so it stays visible in the gaps either side of whichever project is facing you -->
+      <div class="ring__core"><canvas data-coil="ring"></canvas></div>
+      <div class="ring__orbit" id="ringOrbit"></div>
+    </div>
 
-    <section class="statement dark" id="statement" data-theme="dark">
-      <div class="statement__inner">
-        <p class="statement__copy" data-reveal>I like projects where <em>AI, product thinking and engineering</em> have to survive contact with real users.</p>
-        <div class="orb" aria-hidden="true"><canvas id="orbCanvas"></canvas></div>
-      </div>
-    </section>
+    <div class="ring__read" id="ringRead">
+      <p class="ring__k"><span id="rNum">01</span> / <em id="rTot">08</em><b id="rKind"></b></p>
+      <h3 class="ring__n" id="rName"></h3>
+      <p class="ring__t" id="rTag"></p>
+      <button class="ring__more" id="rMore" data-cursor="open">
+        <span>Read the detail</span><i></i>
+      </button>
+    </div>
 
-    <section class="toolbox dark" data-theme="dark">
-      <div class="section-head">
-        <h2>THE TOOLBOX</h2>
-        <p>The stack changes. The bias stays the same: understand it, build it, test it, ship it.</p>
-      </div>
-      <div class="rail"><div class="rail__track" id="railA"></div></div>
-      <div class="rail rail--reverse"><div class="rail__track" id="railB"></div></div>
-    </section>
+    <div class="ring__nav">
+      <button id="rPrev" data-cursor="prev" aria-label="Previous project">←</button>
+      <button id="rNext" data-cursor="next" aria-label="Next project">→</button>
+    </div>
 
-    <section class="work" id="work" data-theme="light">
-      <div class="work__heading">
-        <p class="kicker">SELECTED WORK · 2025—2026</p>
-        <h2>WORKS</h2>
-        <p>Eight projects across AI, computer vision, realtime systems, healthcare tooling and social products.</p>
-      </div>
-
-      <div class="project-stage" id="projectStage">
-        <div class="project-orbit" id="projectOrbit"></div>
-        <div class="project-core" aria-hidden="true"><span>RM</span><small>BUILD / TEST / SHIP</small></div>
-        <div class="project-readout">
-          <div class="project-count"><span id="projectIndex">01</span> / <span id="projectTotal">08</span><b id="projectKind"></b></div>
-          <h3 id="projectName">ReturnReview</h3>
-          <p id="projectTag"></p>
-          <button id="projectMore" data-cursor="OPEN">Read the detail <i>↗</i></button>
+    <!-- detail: slides down over the ring, so it reads as coming out of the panel -->
+  <div class="drawer" id="drawer" hidden>
+    <div class="drawer__in">
+      <button class="drawer__x" id="drawerX" data-cursor="close">CLOSE ✕</button>
+      <div class="drawer__grid">
+        <div>
+          <h4 id="dName"></h4>
+          <p class="drawer__d" id="dDesc"></p>
+          <div class="drawer__links" id="dLinks"></div>
         </div>
-        <div class="project-nav"><button id="prevProject" aria-label="Previous project">←</button><button id="nextProject" aria-label="Next project">→</button></div>
-      </div>
-
-      <div class="drawer" id="drawer" hidden>
-        <button class="drawer__close" id="drawerClose">CLOSE ✕</button>
-        <div class="drawer__grid">
-          <div><p class="kicker" id="drawerKind"></p><h3 id="drawerName"></h3><p id="drawerDesc"></p><div class="drawer__links" id="drawerLinks"></div></div>
-          <div><p class="kicker">STACK</p><div class="stack-list" id="drawerStack"></div><p class="kicker drawer__metric-label">WHY IT MATTERS</p><p class="drawer__metric" id="drawerMetric"></p></div>
+        <div>
+          <p class="drawer__k">Tech stack</p>
+          <ul class="drawer__stack" id="dStack"></ul>
+          <p class="drawer__k drawer__k--2">By the numbers</p>
+          <div class="drawer__m" id="dMetrics"></div>
         </div>
       </div>
-    </section>
+    </div>
+  </div>
+  </div>
 
-    <section class="manifesto dark" data-theme="dark">
-      <h2><span>(HUMAN) CURIOSITY</span><span>MACHINE SPEED</span></h2>
-    </section>
+</section>
 
-    <section class="about" id="about" data-theme="light">
-      <div class="section-head section-head--dark"><h2>ABOUT ME</h2><p>Not just “AI”. I care about the full path from idea to interface to deployment.</p></div>
-      <div class="laptop" id="laptop">
-        <div class="laptop__screen">
-          <div class="desktop-bar"><span><i></i><i></i><i></i></span><b>rishi — desktop</b><time id="clock">--:--</time></div>
-          <div class="desktop">
-            <div class="desktop__apps">
-              <button class="desktop-app active" data-window="about"><b>◉</b><span>About me</span></button>
-              <button class="desktop-app" data-window="now"><b>⌁</b><span>Currently</span></button>
-              <button class="desktop-app" data-window="location"><b>⌖</b><span>Location</span></button>
+<!-- ══ 04 · manifesto ═══════════════════════════════════════════════════════ -->
+<section class="mani" id="mani" data-sec="mani">
+  <h2 class="mani__h">
+    <span class="ln">(HUMAN) CURIOSITY</span>
+    <span class="ln">MACHINE SPEED</span>
+  </h2>
+</section>
+
+<!-- ══ 05 · about ═══════════════════════════════════════════════════════════ -->
+<section class="about" id="about" data-sec="about">
+  <div class="about__col">
+    <h2 class="about__t dsp">About me</h2>
+    <!-- the About copy lives inside a desktop: two apps, one window at a time -->
+    <div class="mac" id="mac">
+      <div class="mac__lid">
+        <div class="mac__screen">
+          <div class="mac__bar">
+            <span class="mac__dots"><i></i><i></i><i></i></span>
+            <span class="mac__name">rishi — desktop</span>
+            <span class="mac__clock" id="macClock">--:--</span>
+          </div>
+          <div class="mac__desk">
+            <div class="mac__apps">
+              <button class="dapp on" data-win="about" data-cursor="open">
+                <span class="dapp__i">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="12" cy="8.4" r="3.9"/>
+                    <path d="M4.4 20.4c.8-4 3.9-6.1 7.6-6.1s6.8 2.1 7.6 6.1"/>
+                  </svg>
+                </span>
+                <span class="dapp__n">About me</span>
+              </button>
+              <button class="dapp" data-win="now" data-cursor="open">
+                <span class="dapp__i">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="12" cy="12" r="8.4"/>
+                    <path d="M12 7.2V12l3.3 2"/>
+                  </svg>
+                </span>
+                <span class="dapp__n">Currently</span>
+              </button>
+              <button class="dapp" data-win="loc" data-cursor="open">
+                <span class="dapp__i">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 21.2s6.6-6 6.6-10.6a6.6 6.6 0 1 0-13.2 0C5.4 15.2 12 21.2 12 21.2Z"/>
+                    <circle cx="12" cy="10.4" r="2.5"/>
+                  </svg>
+                </span>
+                <span class="dapp__n">Location</span>
+              </button>
             </div>
 
-            <article class="window active" data-window-panel="about">
-              <div class="window__bar"><i></i>About me</div>
-              <div class="window__body about-grid">
-                <div>
-                  <p class="window__lead">I’m Rishikesh Munnaluri — Rishi — a final-year CSE (AI &amp; ML) student who likes building things that are a little too ambitious for a “student project”.</p>
-                  <p>I work across LLM applications, computer vision, realtime systems and full-stack product engineering. I enjoy the ugly middle too: edge cases, sync bugs, evaluations, deployment problems, and making the thing feel polished on somebody else’s device.</p>
-                  <p>My portfolio is less about one stack and more about range: useful AI, multiplayer experiences, creative web experiments, developer tooling and systems work.</p>
+            <article class="win on" id="winAbout">
+              <div class="win__bar"><span class="win__x" data-cursor="close"></span>About me</div>
+              <div class="win__body win__body--about">
+                <div class="win__col">
+                <p class="win__lede">
+                  I'm Rishikesh Munnaluri — Rishi — a final-year engineer with a bias for systems that
+                  <em>survive contact with real users.</em>
+                </p>
+                <p class="win__p">
+                  B.Tech CSE with an AI &amp; ML specialisation at RV University, Bengaluru. I work
+                  across applied AI, computer vision, realtime systems and full-stack product
+                  engineering, and I care about the unglamorous half: evaluation, latency, sync
+                  bugs, QA, and whether the thing still works on somebody else's machine.
+                </p>
+                <p class="win__p">
+                  I like the part of the job where an ambitious idea has to become a real product:
+                  designed, implemented, debugged, deployed and usable on somebody else's device.
+                  Most of what is on this page got there that way.
+                </p>
                 </div>
-                <div class="capability-map" id="capabilityMap"></div>
+                <div class="win__col win__col--fig">
+                  <p class="win__k">Capabilities</p>
+        <!-- a pattern piece. The outline is stitched and notched like a cutting guide, and
+             what I can actually do is laid out inside the head rather than beside it. -->
+        <figure class="fig" id="capFig">
+          <svg class="fig__svg" viewBox="0 0 460 520" role="img"
+               aria-label="Capabilities, set inside a head-and-shoulders silhouette">
+            <defs>
+              <linearGradient id="figG" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#0B0B0C" stop-opacity=".15"/>
+                <stop offset=".55" stop-color="#0B0B0C" stop-opacity=".08"/>
+                <stop offset="1" stop-color="#0B0B0C" stop-opacity=".03"/>
+              </linearGradient>
+              <linearGradient id="figGD" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#F2F1EC" stop-opacity=".17"/>
+                <stop offset=".55" stop-color="#F2F1EC" stop-opacity=".09"/>
+                <stop offset="1" stop-color="#F2F1EC" stop-opacity=".03"/>
+              </linearGradient>
+            </defs>
+            <path class="fig__fill" d="M230 24C296 24 338 76 338 150C338 196 332 234 316 262C306 280 292 292 276 296L276 336C276 356 300 368 340 380C392 394 430 404 446 418L446 520L14 520L14 418C30 404 68 394 120 380C160 368 184 356 184 336L184 296C168 292 154 280 144 262C128 234 122 196 122 150C122 76 164 24 230 24Z"/>
+            <path class="fig__stitch" d="M230 24C296 24 338 76 338 150C338 196 332 234 316 262C306 280 292 292 276 296L276 336C276 356 300 368 340 380C392 394 430 404 446 418L446 520L14 520L14 418C30 404 68 394 120 380C160 368 184 356 184 336L184 296C168 292 154 280 144 262C128 234 122 196 122 150C122 76 164 24 230 24Z"/>
+            <g class="fig__marks"></g>
+            <g class="fig__labels"></g>
+          </svg>
+          <figcaption class="fig__cap" id="capCap">Seven pieces. Run over one.</figcaption>
+        </figure>
+                </div>
               </div>
             </article>
 
-            <article class="window" data-window-panel="now">
-              <div class="window__bar"><i></i>Currently</div>
-              <div class="window__body now-panel"><p class="now-time" id="nowTime">--:--</p><p>IST · Bengaluru</p><dl><div><dt>Focus</dt><dd>AI/ML + software engineering roles</dd></div><div><dt>Mode</dt><dd>Building, applying, learning, shipping</dd></div><div><dt>GitHub</dt><dd><a href="https://github.com/Rishikeshsanin" target="_blank" rel="noopener">@Rishikeshsanin ↗</a></dd></div></dl></div>
+            <article class="win" id="winNow">
+              <div class="win__bar"><span class="win__x" data-cursor="close"></span>Currently</div>
+              <div class="win__body win__body--now">
+                <p class="now__k">Now</p>
+                <p class="now__big" id="nowBig">--:--<em>&nbsp;</em></p>
+                <p class="now__where">IST</p>
+                <dl class="now__rows" id="nowRows"></dl>
+                <a class="now__git" id="nowGit" href="https://github.com/Rishikeshsanin"
+                   target="_blank" rel="noopener" data-cursor="github">reading github…</a>
+              </div>
             </article>
 
-            <article class="window" data-window-panel="location">
-              <div class="window__bar"><i></i>Location</div>
-              <div class="window__body location-panel"><div class="mini-globe" aria-hidden="true"><span></span></div><div><p class="kicker">WHERE</p><h3>Bengaluru, India</h3><p>Studying at RV University. Open to internships, graduate roles and relocation for the right opportunity.</p><p class="coords">12.97° N · 77.59° E</p></div></div>
+            <article class="win" id="winLoc">
+              <div class="win__bar"><span class="win__x" data-cursor="close"></span>Location</div>
+              <div class="win__body win__body--loc">
+                <div class="win__col win__col--globe">
+                  <canvas class="globe" id="globeCv" aria-label="Bengaluru, on a globe — drag to spin"
+                          data-cursor="drag"></canvas>
+                  <p class="globe__co">12.97&deg;N &nbsp;·&nbsp; 77.59&deg;E</p>
+                </div>
+                <div class="win__col">
+                  <p class="win__k">Where</p>
+                  <ul class="wheres">
+                    <li><span>Bengaluru, IN</span><i></i></li>
+                    <li><span>RV University</span><i></i></li>
+                    <li><span>Remote-friendly</span><i></i></li>
+                    <li><span>Open to relocate</span><i></i></li>
+                  </ul>
+                  <p class="globe__note">
+                    Bengaluru is <em>UTC+5:30</em> — roughly half a working day ahead of New York
+                    and half a day behind Sydney. Remote has never been the hard part.
+                  </p>
+                </div>
+              </div>
             </article>
           </div>
         </div>
-        <div class="laptop__base"><span></span></div>
       </div>
-    </section>
+      <div class="mac__hinge"></div>
+      <div class="mac__base"><span></span></div>
+    </div>
+  </div>
+</section>
 
-    <section class="proof" id="proof" data-theme="light">
-      <div class="proof__head"><span class="pill">BUILD SIGNALS</span><h2>PROOF THE WORK<br>LEFT THE LAPTOP.</h2></div>
-      <div class="proof-grid" id="proofGrid"></div>
-      <div class="skills-panel">
-        <div><span class="pill">CAPABILITIES</span><h3>Things I can actually build with.</h3></div>
-        <div class="skills-bars" id="skillsBars"></div>
+
+<!-- ══ 06 · proof — achievements + certifications ═══════════════════════════ -->
+<section class="proof" id="proof" data-sec="proof">
+  <div class="proof__head">
+    <span class="pill">Recognition</span>
+    <h2 class="proof__t">Proof the work<br>left the laptop.</h2>
+  </div>
+  <div class="achs" id="achs"></div>
+
+  <!-- one stage, two states: the certificates disperse out of it while the skill tree
+       fades in behind them, so it reads as one shot rather than two sections -->
+  <div class="field__hold" id="fieldHold">
+    <div class="proof__head proof__head--2" id="credHead">
+      <span class="pill">Build record</span>
+      <h2 class="proof__t">Shipped, tested,<br>and on the record.</h2>
+    </div>
+    <div class="field" id="certs"></div>
+    <div class="abil" id="abil">
+  <div class="abil__head">
+    <h2 class="abil__t">Abilities</h2>
+  </div>
+  <div class="abil__grid" id="abilGrid"></div>
+  <div class="abil__chips" id="abilChips"></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ 07 · CTA ═════════════════════════════════════════════════════════════ -->
+<section class="cta" id="cta">
+  <div class="cta__obj"><canvas data-coil="cta"></canvas></div>
+  <div class="cta__track" id="ctaTrack">
+    <span>LET'S BUILD SOMETHING</span><span>LET'S BUILD SOMETHING</span><span>LET'S BUILD SOMETHING</span>
+  </div>
+</section>
+
+<!-- ══ 08 · contact ═════════════════════════════════════════════════════════ -->
+<section class="contact" id="contact" data-sec="contact">
+  <!-- the box here used to type a paragraph at you and then sit there. Same frame,
+       something to do in it. -->
+  <div class="gm">
+    <div class="gm__bar">
+      <span>SNAKE.EXE</span>
+      <span class="gm__hud">SCORE <b id="gmScore">00</b> · BEST <b id="gmBest">00</b></span>
+    </div>
+    <canvas class="gm__c" id="gmCanvas" aria-label="Snake — arrows or WASD to play"></canvas>
+    <div class="gm__foot">
+      <span class="gm__hint" id="gmHint">enter to start</span>
+    </div>
+  </div>
+
+  <!-- not a second list of links — the phone in the footer already does that.
+       This says what a message should be about, and writes the first line for you. -->
+  <aside class="brief">
+    <!-- stuck to the page the way you would stick one to a monitor -->
+    <figure class="note">
+      <span class="note__tape"></span>
+      <p class="note__h">notes to self</p>
+      <ul class="note__list">
+        <li>build the weird version</li>
+        <li>ship it, <b>then</b> measure it</li>
+        <li>&ldquo;works on my machine&rdquo; isn&rsquo;t done</li>
+        <li><b>latency</b> is a feature</li>
+        <li>read the error. <b>all</b> of it</li>
+      </ul>
+      <p class="note__m">stuck to my monitor since 2023</p>
+    </figure>
+  </aside>
+</section>
+
+<!-- ══ 09 · footer ══════════════════════════════════════════════════════════ -->
+<footer class="foot" id="foot">
+  <h2 class="foot__h">
+    <span class="ln"><span class="warp" data-warp>SHIPPING &amp;</span></span>
+    <span class="ln"><span class="warp" data-warp>LEARNING SINCE</span></span>
+    <span class="ln"><span class="warp" data-warp>'2023</span></span>
+  </h2>
+  <!-- the ways to reach me, as things you can actually tap -->
+  <div class="phone">
+    <div class="phone__lid">
+      <div class="phone__screen">
+        <div class="phone__bar"><i></i><span>RM</span></div>
+        <p class="phone__k">Reach me</p>
+        <div class="phone__apps">
+          <a class="app" href="https://github.com/Rishikeshsanin" target="_blank" rel="noopener" data-cursor="github">
+            <i><img src="https://cdn.simpleicons.org/github/FFFFFF" alt=""></i><span>GitHub</span></a>
+          <a class="app" href="https://www.linkedin.com/in/rishikesh-munnaluri-143b34293/" target="_blank" rel="noopener" data-cursor="linkedin">
+            <i><img src="https://cdn.simpleicons.org/linkedin/0A66C2" alt=""></i><span>LinkedIn</span></a>
+          <a class="app" href="mailto:rishikeshsanin@gmail.com" data-cursor="email">
+            <i><img src="https://cdn.simpleicons.org/gmail/EA4335" alt=""></i><span>Email</span></a>
+          <a class="app" href="resume.html" target="_blank" rel="noopener" data-cursor="open">
+            <i class="app__cv">CV</i><span>Résumé</span></a>
+        </div>
+        <p class="phone__foot">BENGALURU · INDIA</p>
       </div>
-    </section>
+    </div>
+  </div>
+  <div class="foot__bar">
+    <span>©2026 RISHIKESH MUNNALURI. ALL RIGHTS RESERVED</span>
+    <span class="foot__mid">BENGALURU, IN</span>
+    <a href="mailto:rishikeshsanin@gmail.com">RISHIKESHSANIN@GMAIL.COM</a>
+  </div>
+</footer>
 
-    <section class="cta dark" data-theme="dark"><div class="cta__track"><span>LET'S BUILD SOMETHING</span><span>LET'S BUILD SOMETHING</span><span>LET'S BUILD SOMETHING</span></div></section>
+</main>
 
-    <section class="contact dark" id="contact" data-theme="dark">
-      <div class="game-shell">
-        <div class="game-bar"><span>SNAKE.EXE</span><span>SCORE <b id="score">00</b> · BEST <b id="best">00</b></span></div>
-        <canvas id="snakeCanvas" aria-label="Playable Snake game. Use arrow keys or WASD."></canvas>
-        <p id="gameHint">press enter or tap to start · arrows / WASD</p>
-      </div>
-      <aside class="note">
-        <i></i><p>notes to self</p><ul><li>build the weird version</li><li>make it work on real devices</li><li>measure before claiming</li><li>good UX is engineering too</li><li>ship, learn, iterate</li></ul><small>the operating system</small>
-      </aside>
-    </section>
-
-    <footer class="footer dark" data-theme="dark">
-      <h2><span>BUILDING &amp;</span><span>LEARNING IN</span><span>PUBLIC.</span></h2>
-      <div class="phone">
-        <div class="phone__screen"><div class="phone__top"><i></i><b>RM</b></div><p>Reach me</p><div class="phone__apps"><a href="https://github.com/Rishikeshsanin" target="_blank" rel="noopener">GH<span>GitHub</span></a><a href="mailto:rishikeshsanin@gmail.com">@<span>Email</span></a><a href="https://portfolio-main-sepia-xi.vercel.app/" target="_blank" rel="noopener">↗<span>Portfolio</span></a></div></div>
-      </div>
-      <div class="footer__bar"><span>©2026 RISHIKESH MUNNALURI</span><span>BENGALURU, IN</span><a href="mailto:rishikeshsanin@gmail.com">RISHIKESHSANIN@GMAIL.COM</a></div>
-    </footer>
-  </main>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
-  <script src="app.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+<script src="js/data.js?v=80"></script>
+<script src="js/coil.js?v=80"></script>
+<script src="js/screen.js?v=80"></script>
+<script src="js/world.js?v=80"></script>
+<script src="js/globe.js?v=80"></script>
+<script src="js/cursor.js?v=80"></script>
+<script src="js/game.js?v=80"></script>
+<script src="js/app.js?v=80"></script>
 </body>
 </html>
