@@ -590,7 +590,7 @@
         scaleY: 1, ease: 'none',
         scrollTrigger: { trigger: '.xp__timeline', start: 'top 72%', end: 'bottom 72%', scrub: 0.65 },
       });
-      $('.xp__item').forEach(el => {
+      $$('.xp__item').forEach(el => {
         const card = $('.xp__card', el);
         const when = $('.xp__when', el);
         const dot = $('.xp__dot', el);
