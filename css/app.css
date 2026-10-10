@@ -1228,3 +1228,11 @@ ul{margin:0;padding:0;list-style:none}
   .xp__resume{grid-template-columns:1fr}
   .xp__resume-actions{justify-content:flex-start}
 }
+
+.xp__card--incoming{border-color:rgba(198,242,78,.56);background:linear-gradient(135deg,rgba(198,242,78,.11),rgba(242,241,236,.025))}
+.xp__card--incoming::after{
+  content:"INCOMING";position:absolute;right:clamp(18px,2.2vw,38px);bottom:clamp(18px,2.2vw,34px);
+  font-family:var(--mono);font-size:clamp(8px,.58vw,10px);letter-spacing:.16em;color:var(--acid);
+  transform:rotate(-90deg) translateX(100%);transform-origin:100% 100%;opacity:.72
+}
+.xp__card--lead{background:linear-gradient(135deg,rgba(143,168,255,.08),rgba(242,241,236,.025))}

@@ -13,7 +13,7 @@ A complete motion-heavy portfolio for Rishikesh Munnaluri, using the established
 - 3D project ring + project detail drawer
 - desktop-style About / Currently / Location UI
 - draggable globe
-- dedicated Experience timeline for RICON Technologies and Dhee Data Center
+- complete Experience timeline: incoming Deloitte role, RICON Technologies, Mew Thetis leadership, Dhee Data Center
 - RV University education entry
 - achievements / build record / animated abilities
 - View Resume + Download Resume using one replaceable PDF path
