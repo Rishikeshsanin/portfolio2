@@ -463,7 +463,7 @@ window.DATA = {
       "h": "B.Tech CSE — AI & ML",
       "w": "RV University · 2023–2027",
       "s": "Final year",
-      "m": "7.9/10",
+      "m": "2027",
       "p": "Computer Science and Engineering with an Artificial Intelligence and Machine Learning specialization."
     },
     {
