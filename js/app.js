@@ -578,6 +578,42 @@
     scrollTrigger: { trigger: '.mani', start: 'top 78%', end: 'bottom bottom', scrub: 0.7 },
   });
 
+
+  /* ══ experience — scroll-drawn career timeline ══════════════════════════ */
+  const xpFill = $('#xpFill');
+  if (xpFill) {
+    if (REDUCED) {
+      gsap.set(xpFill, { scaleY: 1 });
+      gsap.set('.xp__item', { opacity: 1, y: 0 });
+    } else {
+      gsap.to(xpFill, {
+        scaleY: 1, ease: 'none',
+        scrollTrigger: { trigger: '.xp__timeline', start: 'top 72%', end: 'bottom 72%', scrub: 0.65 },
+      });
+      $('.xp__item').forEach(el => {
+        const card = $('.xp__card', el);
+        const when = $('.xp__when', el);
+        const dot = $('.xp__dot', el);
+        gsap.fromTo(card,
+          { y: 86, opacity: 0, rotateX: 7, transformPerspective: 1000 },
+          { y: 0, opacity: 1, rotateX: 0, duration: 1.05, ease: 'expo.out',
+            scrollTrigger: { trigger: el, start: 'top 86%' } });
+        gsap.fromTo(when, { x: -28, opacity: 0 },
+          { x: 0, opacity: 1, duration: .8, ease: 'power3.out',
+            scrollTrigger: { trigger: el, start: 'top 87%' } });
+        gsap.fromTo(dot, { scale: 0, opacity: 0 },
+          { scale: 1, opacity: 1, duration: .55, ease: 'back.out(2.4)',
+            scrollTrigger: { trigger: el, start: 'top 84%' } });
+      });
+      gsap.fromTo('.xp__signal span', { y: 28, opacity: 0 },
+        { y: 0, opacity: 1, stagger: .08, duration: .75, ease: 'power3.out',
+          scrollTrigger: { trigger: '.xp__signal', start: 'top 90%' } });
+      gsap.fromTo('.xp__resume', { y: 60, opacity: 0, scale: .985 },
+        { y: 0, opacity: 1, scale: 1, duration: 1, ease: 'expo.out',
+          scrollTrigger: { trigger: '.xp__resume', start: 'top 88%' } });
+    }
+  }
+
   /* ══ proof cards rise ═══════════════════════════════════════════════════ */
   $$('.ach').forEach(el => gsap.fromTo(el, { y: 70, opacity: 0 }, {
     y: 0, opacity: 1, duration: 1.05, ease: 'expo.out',
@@ -720,8 +756,8 @@
     rail.style.transform = `translateX(${r.left - nb.left}px)`;
     rail.style.bottom = (nb.bottom - r.bottom) + 'px';
   }
-  const SECS = { hero: 'hero', stmt: 'hero', tools: 'work', work: 'work', mani: 'about', abil: 'proof', tools: 'work',
-                 about: 'about', proof: 'proof', contact: 'contact' };
+  const SECS = { hero: 'hero', stmt: 'hero', tools: 'work', work: 'work', mani: 'about', abil: 'proof',
+                 about: 'about', experience: 'experience', proof: 'proof', contact: 'contact' };
   $$('section[data-sec]').forEach(sec => {
     ScrollTrigger.create({
       trigger: sec, start: 'top 55%', end: 'bottom 55%',

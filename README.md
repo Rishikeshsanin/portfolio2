@@ -1,11 +1,28 @@
 # RM Portfolio — Rishikesh Munnaluri
 
-Motion-heavy single-page portfolio adapted from the supplied reference implementation with Rishi's own identity and projects.
+## Version One
 
-Preserved systems include the spring liquid cursor, boot sequence, GSAP/ScrollTrigger choreography, Lenis smooth scrolling, live hero canvas, metallic coils, toolbox rails, 3D project ring, drawer, desktop About UI, draggable globe, capability figure, build-record fountain transition, animated abilities, CTA marquee, Snake game, footer warp, and phone contact UI.
+A complete motion-heavy portfolio for Rishikesh Munnaluri, using the established black / off-white / acid visual language and the original interaction stack.
 
-Run locally with:
+### V1
+- liquid spring cursor
+- animated boot + RM monogram
+- GSAP / ScrollTrigger choreography + Lenis smooth scrolling
+- live hero canvas and metallic coil canvases
+- animated toolbox rails
+- 3D project ring + project detail drawer
+- desktop-style About / Currently / Location UI
+- draggable globe
+- dedicated Experience timeline for RICON Technologies and Dhee Data Center
+- RV University education entry
+- achievements / build record / animated abilities
+- View Resume + Download Resume using one replaceable PDF path
+- playable Snake
+- footer contact phone
+- SEO/social metadata, structured Person data and keyboard focus states
+- responsive and reduced-motion behavior
 
-```bash
-python serve.py
-```
+Temporary résumé path:
+`assets/Rishikesh-Munnaluri-Resume.pdf`
+
+Replace that one PDF later and every résumé action keeps working.
